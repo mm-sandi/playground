@@ -1,0 +1,89 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "hiring-v1",
+      "runtimeExecutable": "/Users/kurniawan/.nvm/versions/node/v24.14.0/bin/npm",
+      "runtimeArgs": ["--prefix", "/Users/kurniawan/Downloads/rosemary-frontend-main", "run", "dev:hiring"],
+      "port": 3000
+    },
+    {
+      "name": "ls-insight-v1",
+      "runtimeExecutable": "/Users/kurniawan/.nvm/versions/node/v24.14.0/bin/npm",
+      "runtimeArgs": ["--prefix", "/Users/kurniawan/Downloads/rosemary-frontend-main", "run", "dev:ls-insight"],
+      "port": 3000
+    },
+    {
+      "name": "ls-operator-v1",
+      "runtimeExecutable": "/Users/kurniawan/.nvm/versions/node/v24.14.0/bin/npm",
+      "runtimeArgs": ["--prefix", "/Users/kurniawan/Downloads/rosemary-frontend-main", "run", "dev:ls-operator"],
+      "port": 3000
+    },
+    {
+      "name": "workbench-v1",
+      "runtimeExecutable": "/Users/kurniawan/.nvm/versions/node/v24.14.0/bin/npm",
+      "runtimeArgs": ["--prefix", "/Users/kurniawan/Downloads/rosemary-frontend-main", "run", "dev:workbench"],
+      "port": 3000
+    },
+    {
+      "name": "influence-v1",
+      "runtimeExecutable": "/Users/kurniawan/.nvm/versions/node/v24.14.0/bin/npm",
+      "runtimeArgs": ["--prefix", "/Users/kurniawan/Downloads/rosemary-frontend-main", "run", "dev:influence"],
+      "port": 3000
+    },
+    {
+      "name": "qpr-lab-v1",
+      "runtimeExecutable": "/Users/kurniawan/.nvm/versions/node/v24.14.0/bin/npm",
+      "runtimeArgs": ["--prefix", "/Users/kurniawan/Downloads/rosemary-frontend-main", "run", "dev:qpr-lab"],
+      "port": 3000
+    },
+    {
+      "name": "mir-panelist-v1",
+      "runtimeExecutable": "/Users/kurniawan/.nvm/versions/node/v24.14.0/bin/npm",
+      "runtimeArgs": ["--prefix", "/Users/kurniawan/Downloads/rosemary-frontend-main", "run", "dev:mir-panelist"],
+      "port": 3000
+    },
+    {
+      "name": "workbench-bff-v1",
+      "runtimeExecutable": "/Users/kurniawan/.nvm/versions/node/v24.14.0/bin/npm",
+      "runtimeArgs": ["--prefix", "/Users/kurniawan/Downloads/rosemary-frontend-main", "run", "dev:workbench-bff"],
+      "port": 4000
+    },
+    {
+      "name": "lognos-v1",
+      "runtimeExecutable": "/Users/kurniawan/.nvm/versions/node/v24.14.0/bin/npm",
+      "runtimeArgs": ["--prefix", "/Users/kurniawan/Downloads/rosemary-frontend-main", "run", "dev:lognos"],
+      "port": 3000
+    },
+    {
+      "name": "platform-example-v1",
+      "runtimeExecutable": "/Users/kurniawan/.nvm/versions/node/v24.14.0/bin/npm",
+      "runtimeArgs": ["--prefix", "/Users/kurniawan/Downloads/rosemary-frontend-main", "run", "dev:platform-example"],
+      "port": 3000
+    },
+    {
+      "name": "odi-operator-v1",
+      "runtimeExecutable": "/Users/kurniawan/.nvm/versions/node/v24.14.0/bin/npm",
+      "runtimeArgs": ["--prefix", "/Users/kurniawan/Downloads/rosemary-frontend-main/apps/odi-operator-v1", "run", "dev"],
+      "port": 3000
+    },
+    {
+      "name": "odi-monitor-v1",
+      "runtimeExecutable": "/Users/kurniawan/.nvm/versions/node/v24.14.0/bin/npm",
+      "runtimeArgs": ["--prefix", "/Users/kurniawan/Downloads/rosemary-frontend-main/apps/odi-monitor-v1", "run", "dev"],
+      "port": 3000
+    },
+    {
+      "name": "odi-customer-v1",
+      "runtimeExecutable": "/Users/kurniawan/.nvm/versions/node/v24.14.0/bin/npm",
+      "runtimeArgs": ["--prefix", "/Users/kurniawan/Downloads/rosemary-frontend-main/apps/odi-customer-v1", "run", "dev"],
+      "port": 3000
+    },
+    {
+      "name": "meap-admin-v1",
+      "runtimeExecutable": "/Users/kurniawan/.nvm/versions/node/v24.14.0/bin/npm",
+      "runtimeArgs": ["--prefix", "/Users/kurniawan/Downloads/rosemary-frontend-main/apps/meap-admin-v1", "run", "dev"],
+      "port": 3000
+    }
+  ]
+}

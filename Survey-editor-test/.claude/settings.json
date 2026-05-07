@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__dabf28b3-f588-41be-bcde-ba388270f9f4__getConfluencePage",
+      "mcp__897ca6be-b63f-4f93-8449-93dbbae0d976__searchJiraIssuesUsingJql",
+      "mcp__897ca6be-b63f-4f93-8449-93dbbae0d976__getConfluencePage",
+      "mcp__897ca6be-b63f-4f93-8449-93dbbae0d976__searchConfluenceUsingCql",
+      "mcp__ccd_session__mark_chapter",
+      "mcp__8734103c-c55e-43e9-ab30-225b3dc134db__slack_search_public_and_private",
+      "mcp__897ca6be-b63f-4f93-8449-93dbbae0d976__getAccessibleAtlassianResources",
+      "Bash(iconv *)",
+      "mcp__dabf28b3-f588-41be-bcde-ba388270f9f4__getConfluencePageDescendants",
+      "mcp__897ca6be-b63f-4f93-8449-93dbbae0d976__getJiraIssue",
+      "mcp__897ca6be-b63f-4f93-8449-93dbbae0d976__getConfluencePageDescendants"
+    ]
+  }
+}

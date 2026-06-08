@@ -195,7 +195,7 @@ End-to-end scenarios exercising the Editor → Answer pipeline at the **1 displa
 These cases validate interactions between two or more logic/configuration features applied simultaneously, confirming no interference and correct combined results.
 
 | Test ID | Logic Combination | QT | Scenario | Setup | Expected Result | NT | Related JIRA |
-| --- | --- | --- | --- | --- | --- | --- |  |
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | C-2LOGIC-001 | rand + exclusive | MAC | Exclusive randomized with others | MAC q1 rand=random; choice-5 exclusive 5 choices | choice-5 in random position; selecting it deselects choices 1-4 |  |  |
 | C-2LOGIC-002 | rand + exclusive | MAC | fixedLast + exclusive at bottom | MAC q1 rand=fixedLast; choice-5 exclusive AND fixed | choice-5 always last; 1-4 randomized above; exclusive deselect unchanged |  |  |
 | C-2LOGIC-003 | rand + exclusive | MAC | Flip + exclusive | MAC q1 rand=flip; exclusive=choice-3; select choice-3 | Flip changes display order on next load; exclusive logic unchanged |  |  |
@@ -248,7 +248,7 @@ These cases validate interactions between two or more logic/configuration featur
 ### C-2LOGIC Additional Cases (C-2LOGIC-047–072)
 
 | Test ID | Logic Combination | QT | Scenario | Setup | Expected Result | NT | Related JIRA |
-| --- | --- | --- | --- | --- | --- | --- |  |
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | C-2LOGIC-047 | rand + required | SAR | Random order + required: answer mandatory regardless of position | SAR q1 rand=random required=ON; 5 choices | Choices randomized; required enforced; submit blocked if no selection regardless of which choice is where |  |  |
 | C-2LOGIC-048 | rand + required | MTS | Flip row order + required=all: all rows required in any order | MTS q1 rand=flip required=all; 4 rows | Half see original order; half reversed; all 4 rows required in both orderings; per-row error if skipped |  |  |
 | C-2LOGIC-049 | rand + required | MTM | Random cols + required=custom: marked rows enforced by SQ ID | MTM q1 rand=random cols required=custom; SQs 1,3 marked required | Col order randomized; SQs 1,3 required by ID regardless of display position |  |  |

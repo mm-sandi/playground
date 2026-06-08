@@ -24,26 +24,25 @@
 
 ## Comprehensive E2E Cases (E2E-NEW-001 – E2E-NEW-013)
 
-**Columns:** Test ID | Question Type | Description | Pre-conditions | Steps to Perform | Expectations | Actual Result | Tested Survey ID | Tested
 
-| Test ID | Question Type | Description | Pre-conditions | Steps to Perform | Expectations | Actual Result | Tested Survey ID | Related JIRA |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| E2E-NEW-001 | Radio (SAR) | Horizontal 5-column layout created in Editor renders correctly in Answer. | New survey. | Editor: add Radio, 5 choices, direction=Horizontal, columns=5. 2. Publish. 3. Open Answer. | All 5 choices appear in a single row in Answer. |  |  |  |
-| E2E-NEW-002 | Checkbox (MAC) | Exclusive + Specify=Exact 3 enforced end-to-end. | New survey. | Editor: Checkbox, 5 choices, choice 5=Exclusive, Specify=Exact 3. 2. Publish. 3. Answer: (a) select 3 non-exclusive → Next; (b) select exclusive only → Next; (c) select 2 non-exclusive → Next. | (a) Valid. (b) Valid. (c) Error: "This question requires selecting 3 choices." |  |  |  |
-| E2E-NEW-003 | Matrix Radio (MTS) | Disable Choices configuration in Editor prevents those choices from being selected in Answer. | New survey. | Editor: MTS, choice 2 disabled for SQ1 via Disable Choices dialog. 2. Publish. 3. Answer: attempt to select choice 2 in SQ1. | Choice 2 in SQ1 is not selectable (disabled/grayed). Other SQs unaffected. |  |  |  |
-| E2E-NEW-004 | Matrix Checkbox (MTM) | Matrix Inclusion configured in Editor produces correct dynamic reveal in Answer. | New survey. | Editor: MTM, Matrix Inclusion SQ1→SQ2 for choices 1–3. 2. Publish. 3. Answer: load (observe SQ2); select choices 1+2 in SQ1 (observe SQ2); deselect (observe SQ2). | Initial SQ2: only choices 4–5 visible. After SQ1 selection: choices 1, 2, 4, 5 visible. After deselection: choices 1, 2 removed from SQ2. |  |  |  |
-| E2E-NEW-005 | Matrix Checkbox (MTM) | Prohibition of Simultaneous Matrix Check configured in Editor enforces bidirectional hiding in Answer. | New survey. | Editor: MTM, Prohibition SQ1↔SQ2. 2. Publish. 3. Answer: select choice 1 in SQ1; observe SQ2; select choice 2 in SQ2; observe SQ1. | Choice 1 hidden in SQ2 after SQ1 selection. Choice 2 hidden in SQ1 after SQ2 selection. |  |  |  |
-| E2E-NEW-006 | Ranking (RNK) | Flip randomization configured in Editor appears as normal or fully-reversed order in Answer. | New survey. | Editor: Ranking 5 choices, randomization=Flip. 2. Publish. 3. Load Answer in 5+ sessions. | Each session shows either the original order or fully reversed; no other orderings occur. |  |  |  |
-| E2E-NEW-007 | Constant Sum (RAT) | Out-of-10 unit with 5 items enforces total=10 in Answer. | New survey. | Editor: RAT 5 items, unit=Out of 10. 2. Publish. 3. Answer: enter values summing to 9 → Next; enter values summing to 10 → Next. | First attempt: error "Enter values so that the total is 10." Second attempt: valid; proceeds. |  |  |  |
-| E2E-NEW-008 | Screening Out | Yellow flag screening-out configured in Editor results in screeningOutFlg=2 saved in response data. | New survey. | Editor: Screening Out rule with yellow flag ON triggered by Q1=choice A. 2. Publish. 3. Answer Q1=choice A. 4. Inspect saved response data. | Respondent redirected to Thank You page (same as normal screen-out); response record has `screeningOutFlg = 2` (yellow flag screen-out — distinguishable from `screeningOutFlg = 1` which is standard screen-out without yellow flag, and `screeningOutFlg = 0` which is not screened out). No further questions presented. |  |  |  |
-| E2E-NEW-009 | Text Box (FA) | Number type with min=0 and max=24 configured in Editor validates range in real-time in Answer. | New survey. | Editor: FA type=Number, min=0, max=24. 2. Publish. 3. Answer: enter -1; then enter 25; then enter 12. | -1: real-time error "requires a value of 0 or higher". 25: real-time error "requires a value of 24 or lower". 12: valid, no error. |  |  |  |
-| E2E-NEW-010 | Note | Note inserted between Q1 and Q2 in Editor is displayed without a number in Answer; question numbering is correct. | New survey. | Editor: add Q1, then insert a Note (N1), then add Q2. 2. Publish. 3. Open Answer. | Answer shows Q1, then Note content (no number label), then Q2. Q1 labeled Q1, Q2 labeled Q2. Note not numbered in Answer. |  |  |  |
-| E2E-NEW-011 | Question Selection | Question Selection logic configured in Editor correctly shows/hides Q2 in Answer based on Q1 answer. | New survey. | Editor: Q1 Radio, Q2 Radio, Selection logic: show Q2 only if Q1=choice A. 2. Publish. 3. Answer Q1=choice B → observe Q2. 4. Answer Q1=choice A → observe Q2. | Q2 hidden when Q1=B; Q2 shown when Q1=A. |  |  |  |
-| E2E-NEW-012 | Sub-question Selection | Sub-question Selection logic configured in Editor shows/hides a specific SQ in Answer. | New survey. | Editor: Matrix Radio, SQ2 with selection logic gated on a previous question's answer. 2. Publish. 3. Answer the gating question with qualifying value. 4. Answer with non-qualifying value. | SQ2 visible on qualifying answer; SQ2 hidden on non-qualifying answer. |  |  |  |
-| E2E-NEW-013 | Any (auto-select) | Choice selection narrowing to 1 displayed choice triggers auto-select and hides the required question in Answer. | New survey with choice selection reducing a Radio question to 1 visible choice. | Editor: Q1 Checkbox + Q2 Radio with choice selection (choices of Q2 gated on Q1 answers), such that selecting choice A in Q1 leaves only 1 choice in Q2. Q2 required=Yes. 2. Publish. 3. Answer Q1=choice A only. 4. Observe Q2. | Q2 not displayed; its single remaining choice is auto-selected; answer recorded silently. Survey proceeds to Q3. |  |  |  |
-| E2E-NEW-014 | Bipolar Matrix (MTT) | MTT required=All — valid submission and per-SQ error on skip. | New survey. | Editor: MTT 5 choices 3 SQs required=All. 2. Publish. 3. Skip SQ2 (answer SQ1 and SQ3 only); click Next. | Per-SQ required error fires for SQ2; survey blocked. 4. Answer all 3 SQs; click Next. | All answered; survey advances. |  |  |
-| E2E-NEW-015 | Ranking (RNK) | RNK configured with Dropdown display format in Editor renders as dropdown rank-selectors in Answer. | New survey. | Editor: RNK 5 items, displayFormat=Dropdown. 2. Publish. 3. Open Answer. Observe rank UI. | Each item's rank is selectable via a dropdown selector showing values 1–5; ranking completes by selecting ranks from dropdowns; valid ranked submission advances. |  |  |  |
-| E2E-NEW-016 | Note | Note with HTML rich content (bold text and hyperlink) configured in Editor renders correctly in Answer. | New survey. | Editor: add Note with bold text and an anchor tag. 2. Publish. 3. Open Answer. Observe Note rendering. | Bold text displays as bold; hyperlink is clickable; raw HTML tags are not visible to respondent; surrounding plain text preserved. |  |  |  |
+| Test ID | Question Type | Description | Pre-conditions | Steps | Expected Outcome | Related JIRA |
+| --- | --- | --- | --- | --- | --- | --- |
+| E2E-NEW-001 | Radio (SAR) | Horizontal 5-column layout created in Editor renders correctly in Answer. | New survey. | Editor: add Radio, 5 choices, direction=Horizontal, columns=5. 2. Publish. 3. Open Answer. | All 5 choices appear in a single row in Answer. |  |
+| E2E-NEW-002 | Checkbox (MAC) | Exclusive + Specify=Exact 3 enforced end-to-end. | New survey. | Editor: Checkbox, 5 choices, choice 5=Exclusive, Specify=Exact 3. 2. Publish. 3. Answer: (a) select 3 non-exclusive → Next; (b) select exclusive only → Next; (c) select 2 non-exclusive → Next. | (a) Valid. (b) Valid. (c) Error: "This question requires selecting 3 choices." |  |
+| E2E-NEW-003 | Matrix Radio (MTS) | Disable Choices configuration in Editor prevents those choices from being selected in Answer. | New survey. | Editor: MTS, choice 2 disabled for SQ1 via Disable Choices dialog. 2. Publish. 3. Answer: attempt to select choice 2 in SQ1. | Choice 2 in SQ1 is not selectable (disabled/grayed). Other SQs unaffected. |  |
+| E2E-NEW-004 | Matrix Checkbox (MTM) | Matrix Inclusion configured in Editor produces correct dynamic reveal in Answer. | New survey. | Editor: MTM, Matrix Inclusion SQ1→SQ2 for choices 1–3. 2. Publish. 3. Answer: load (observe SQ2); select choices 1+2 in SQ1 (observe SQ2); deselect (observe SQ2). | Initial SQ2: only choices 4–5 visible. After SQ1 selection: choices 1, 2, 4, 5 visible. After deselection: choices 1, 2 removed from SQ2. |  |
+| E2E-NEW-005 | Matrix Checkbox (MTM) | Prohibition of Simultaneous Matrix Check configured in Editor enforces bidirectional hiding in Answer. | New survey. | Editor: MTM, Prohibition SQ1↔SQ2. 2. Publish. 3. Answer: select choice 1 in SQ1; observe SQ2; select choice 2 in SQ2; observe SQ1. | Choice 1 hidden in SQ2 after SQ1 selection. Choice 2 hidden in SQ1 after SQ2 selection. |  |
+| E2E-NEW-006 | Ranking (RNK) | Flip randomization configured in Editor appears as normal or fully-reversed order in Answer. | New survey. | Editor: Ranking 5 choices, randomization=Flip. 2. Publish. 3. Load Answer in 5+ sessions. | Each session shows either the original order or fully reversed; no other orderings occur. |  |
+| E2E-NEW-007 | Constant Sum (RAT) | Out-of-10 unit with 5 items enforces total=10 in Answer. | New survey. | Editor: RAT 5 items, unit=Out of 10. 2. Publish. 3. Answer: enter values summing to 9 → Next; enter values summing to 10 → Next. | First attempt: error "Enter values so that the total is 10." Second attempt: valid; proceeds. |  |
+| E2E-NEW-008 | Screening Out | Yellow flag screening-out configured in Editor results in screeningOutFlg=2 saved in response data. | New survey. | Editor: Screening Out rule with yellow flag ON triggered by Q1=choice A. 2. Publish. 3. Answer Q1=choice A. 4. Inspect saved response data. | Respondent redirected to Thank You page (same as normal screen-out); response record has `screeningOutFlg = 2` (yellow flag screen-out — distinguishable from `screeningOutFlg = 1` which is standard screen-out without yellow flag, and `screeningOutFlg = 0` which is not screened out). No further questions presented. |  |
+| E2E-NEW-009 | Text Box (FA) | Number type with min=0 and max=24 configured in Editor validates range in real-time in Answer. | New survey. | Editor: FA type=Number, min=0, max=24. 2. Publish. 3. Answer: enter -1; then enter 25; then enter 12. | -1: real-time error "requires a value of 0 or higher". 25: real-time error "requires a value of 24 or lower". 12: valid, no error. |  |
+| E2E-NEW-010 | Note | Note inserted between Q1 and Q2 in Editor is displayed without a number in Answer; question numbering is correct. | New survey. | Editor: add Q1, then insert a Note (N1), then add Q2. 2. Publish. 3. Open Answer. | Answer shows Q1, then Note content (no number label), then Q2. Q1 labeled Q1, Q2 labeled Q2. Note not numbered in Answer. |  |
+| E2E-NEW-011 | Question Selection | Question Selection logic configured in Editor correctly shows/hides Q2 in Answer based on Q1 answer. | New survey. | Editor: Q1 Radio, Q2 Radio, Selection logic: show Q2 only if Q1=choice A. 2. Publish. 3. Answer Q1=choice B → observe Q2. 4. Answer Q1=choice A → observe Q2. | Q2 hidden when Q1=B; Q2 shown when Q1=A. |  |
+| E2E-NEW-012 | Sub-question Selection | Sub-question Selection logic configured in Editor shows/hides a specific SQ in Answer. | New survey. | Editor: Matrix Radio, SQ2 with selection logic gated on a previous question's answer. 2. Publish. 3. Answer the gating question with qualifying value. 4. Answer with non-qualifying value. | SQ2 visible on qualifying answer; SQ2 hidden on non-qualifying answer. |  |
+| E2E-NEW-013 | Any (auto-select) | Choice selection narrowing to 1 displayed choice triggers auto-select and hides the required question in Answer. | New survey with choice selection reducing a Radio question to 1 visible choice. | Editor: Q1 Checkbox + Q2 Radio with choice selection (choices of Q2 gated on Q1 answers), such that selecting choice A in Q1 leaves only 1 choice in Q2. Q2 required=Yes. 2. Publish. 3. Answer Q1=choice A only. 4. Observe Q2. | Q2 not displayed; its single remaining choice is auto-selected; answer recorded silently. Survey proceeds to Q3. |  |
+| E2E-NEW-014 | Bipolar Matrix (MTT) | MTT required=All — valid submission and per-SQ error on skip. | New survey. | Editor: MTT 5 choices 3 SQs required=All. 2. Publish. 3. Skip SQ2 (answer SQ1 and SQ3 only); click Next. | Per-SQ required error fires for SQ2; survey blocked. 4. Answer all 3 SQs; click Next. All answered; survey advances. |  |
+| E2E-NEW-015 | Ranking (RNK) | RNK configured with Dropdown display format in Editor renders as dropdown rank-selectors in Answer. | New survey. | Editor: RNK 5 items, displayFormat=Dropdown. 2. Publish. 3. Open Answer. Observe rank UI. | Each item's rank is selectable via a dropdown selector showing values 1–5; ranking completes by selecting ranks from dropdowns; valid ranked submission advances. |  |
+| E2E-NEW-016 | Note | Note with HTML rich content (bold text and hyperlink) configured in Editor renders correctly in Answer. | New survey. | Editor: add Note with bold text and an anchor tag. 2. Publish. 3. Open Answer. Observe Note rendering. | Bold text displays as bold; hyperlink is clickable; raw HTML tags are not visible to respondent; surrounding plain text preserved. |  |
 
 ---
 
@@ -53,7 +52,7 @@ End-to-end scenarios exercising the Editor → Answer pipeline at the **1 displa
 
 ### 3.1 One-Choice Cases (C1-E2E-001 – C1-E2E-045)
 
-| ID | Choices | Question Type | Logic 1 | Logic 2 | Description | Pre-conditions | Steps | Expected Result | Related JIRA |
+| Test ID | Choices | Question Type | Logic 1 | Logic 2 | Description | Pre-conditions | Steps | Expected Outcome | Related JIRA |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | C1-E2E-001 | 1 | Radio (SAR) | Choice Selection | — | Editor configures Choice Selection that narrows Q2 to 1 choice; required → Q2 auto-selected in Answer. | Editor: Q1 Checkbox; Q2 Radio required=Yes with Choice Selection gating by Q1. | Editor create+publish. 2. Answer Q1 such that only 1 choice remains in Q2. 3. Observe Q2. | Q2 not shown; single choice auto-selected; survey advances to Q3. |  |
 | C1-E2E-002 | 1 | Radio (SAR) | Choice Selection | Screening Out | Narrowed single choice is also a screen-out trigger. | Editor: Q2 required=Yes; Choice Selection narrows to 1; that choice flagged screen-out. | Editor publish. 2. Answer Q1 → Q2 auto-trigger. | Auto-select fires; screen-out exits survey to Thank You. |  |
@@ -103,7 +102,7 @@ End-to-end scenarios exercising the Editor → Answer pipeline at the **1 displa
 
 ### 3.2 Five-Choice Cases (C5-E2E-001 – C5-E2E-080)
 
-| ID | Choices | Question Type | Logic 1 | Logic 2 | Description | Pre-conditions | Steps | Expected Result | Related JIRA |
+| Test ID | Choices | Question Type | Logic 1 | Logic 2 | Description | Pre-conditions | Steps | Expected Outcome | Related JIRA |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | C5-E2E-001 | 5 | Radio (SAR) | None | — | Editor vertical layout; Answer renders 5 choices vertically. | Editor: Radio 5 choices, vertical. | Publish. 2. Answer load. | 5 choices vertical. |  |
 | C5-E2E-002 | 5 | Radio (SAR) | None | — | Horizontal 5-column layout in Editor renders correctly. | Editor: Radio 5 choices, horizontal 5-col. | Publish. 2. Answer load. | Single row of 5. |  |
@@ -185,7 +184,7 @@ End-to-end scenarios exercising the Editor → Answer pipeline at the **1 displa
 | C5-E2E-078 | 5 | Constant Sum (RAT) | Choice Randomization | — | Items random; bar follows displayed order. | Editor: RAT Random. | Publish. 2. Load. | Bar matches order. |  |
 | C5-E2E-079 | 5 | Constant Sum (RAT) | Choice Selection | — | Narrow to 3; total still enforced. | Editor: RAT Choice Selection. | Publish. 2. Trigger; sum narrowed. | Valid. |  |
 | C5-E2E-080 | 5 | Note | Question Selection | — | Note conditional display. | Editor: Note gated. | Publish. 2. Trigger qualifying/non. | Visible/hidden accordingly. |  |
-| C5-E2E-081 | 5 | Text Area (FAL) | None | — | FAL required=All: partial fill (4 of 5 rows) blocked; full fill advances. | Editor: FAL 5 rows required=All. | Publish. 2. Fill 4 of 5 rows; click Next. | Required error for unfilled row; survey blocked. 3. Fill all 5; click Next. | Advances. |  |
+| C5-E2E-081 | 5 | Text Area (FAL) | None | — | FAL required=All: partial fill (4 of 5 rows) blocked; full fill advances. | Editor: FAL 5 rows required=All. | Publish. 2. Fill 4 of 5 rows; click Next. 3. Fill all 5; click Next. | Required error for unfilled row; survey blocked. Advances. |  |
 | C5-E2E-082 | 5 | Radio (SAR) | Screening Out (yellow flag) | — | Yellow-flag screen-out: screeningOutFlg=2 stored. | Editor: SAR; choice-3 screen-out yellow-flag=ON. | Publish. 2. Select choice-3. Next. Inspect API response. | screeningOutFlg=2; survey terminates with yellow flag (distinguishable from screeningOutFlg=1 standard screen-out). |  |
 
 ---
@@ -194,7 +193,7 @@ End-to-end scenarios exercising the Editor → Answer pipeline at the **1 displa
 
 These cases validate interactions between two or more logic/configuration features applied simultaneously, confirming no interference and correct combined results.
 
-| Test ID | Logic Combination | QT | Scenario | Setup | Expected Result | NT | Related JIRA |
+| Test ID | Logic Combination | QT | Scenario | Setup | Expected Outcome | NT | Related JIRA |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | C-2LOGIC-001 | rand + exclusive | MAC | Exclusive randomized with others | MAC q1 rand=random; choice-5 exclusive 5 choices | choice-5 in random position; selecting it deselects choices 1-4 |  |  |
 | C-2LOGIC-002 | rand + exclusive | MAC | fixedLast + exclusive at bottom | MAC q1 rand=fixedLast; choice-5 exclusive AND fixed | choice-5 always last; 1-4 randomized above; exclusive deselect unchanged |  |  |
@@ -247,7 +246,7 @@ These cases validate interactions between two or more logic/configuration featur
 
 ### C-2LOGIC Additional Cases (C-2LOGIC-047–072)
 
-| Test ID | Logic Combination | QT | Scenario | Setup | Expected Result | NT | Related JIRA |
+| Test ID | Logic Combination | QT | Scenario | Setup | Expected Outcome | NT | Related JIRA |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | C-2LOGIC-047 | rand + required | SAR | Random order + required: answer mandatory regardless of position | SAR q1 rand=random required=ON; 5 choices | Choices randomized; required enforced; submit blocked if no selection regardless of which choice is where |  |  |
 | C-2LOGIC-048 | rand + required | MTS | Flip row order + required=all: all rows required in any order | MTS q1 rand=flip required=all; 4 rows | Half see original order; half reversed; all 4 rows required in both orderings; per-row error if skipped |  |  |
@@ -283,7 +282,6 @@ These cases validate interactions between two or more logic/configuration featur
 
 These cases address coverage gaps identified in the second comprehensive review (2026-05-11). They cover scenarios not addressed in the original pipeline or combination tables.
 
-**Columns:** Test ID | Question Type | Scenario | Pre-conditions | Steps | Expected Outcome | Tested
 
 | Test ID | QT | Scenario | Pre-conditions | Steps | Expected Outcome | Related JIRA |
 |---|---|---|---|---|---|---|
@@ -299,7 +297,7 @@ These cases address coverage gaps identified in the second comprehensive review 
 | E2E-GAP-010 | MTS (Matrix Radio) | MTS prohibition — deselect in SQ1 restores choice in SQ2; re-select hides new choice | Create survey: Q1 (MTS, 5 choices, 3 SQs, Prohibition SQ1↔SQ2). Publish. | Open Answer. (a) Select choice-3 in SQ1; observe SQ2. (b) Deselect choice-3 in SQ1 (select choice-1 instead); observe SQ2. | (a) choice-3 hidden in SQ2 after SQ1 selects it. (b) choice-3 restored in SQ2; choice-1 now hidden in SQ2 (newly selected choice in SQ1 is now prohibited in SQ2). Dynamic real-time update; no page reload needed. |  |
 | E2E-GAP-011 | MAC | Auto-select exception: sole remaining displayed choice is Exclusive → question shown, no auto-select, even if required | Create survey: Q1 (MAC, 5 choices, choice-5=Exclusive, Specify=Exact 1, required=Yes; Choice Selection narrows to 1, and that 1 remaining choice IS choice-5). Publish. | Open Answer. Trigger Choice Selection so only choice-5 remains. Observe Q2. | Auto-select is NOT triggered: per spec, when the sole remaining displayed choice has Exclusive flag, auto-select is blocked; Q is shown to respondent; respondent must manually select choice-5. |  |
 | E2E-GAP-012 | MTS (Matrix Radio) | MTS prohibition — SQ emptied by prohibition → no required validation error; survey advances | Create survey: Q1 (MTS, 3 choices, 2 SQs, required=All, Prohibition SQ1↔SQ2: SQ1 selects all 3 choices → SQ2 has 0 available). Publish. | Open Answer. Select all 3 choices in SQ1. Click Next. | SQ2 has 0 choices remaining due to prohibition; per spec: empty SQ resulting from prohibition is NOT a validation error; survey advances on Next even though SQ2 has required=All and no selection. |  |
-| E2E-GAP-013 | Constant Sum (RAT) | Optional RAT Out-of-10 mode: all items empty → advances (unanswered); any item non-zero → total=10 enforced. | Create survey: Q1 (RAT Out-of-10, 5 items, required=OFF). Publish. | (a) Open Answer. Leave all 5 items at 0; click Next. | Survey advances; response saved as unanswered. (b) Restart. Enter value=3 for item-1 only; click Next. | ConstantSumError: sum must equal 10; survey blocked until total corrected. |  |
+| E2E-GAP-013 | Constant Sum (RAT) | Optional RAT Out-of-10 mode: all items empty → advances (unanswered); any item non-zero → total=10 enforced. | Create survey: Q1 (RAT Out-of-10, 5 items, required=OFF). Publish. | (a) Open Answer. Leave all 5 items at 0; click Next. (b) Restart. Enter value=3 for item-1 only; click Next. | (a) Survey advances; response saved as unanswered. (b) ConstantSumError: sum must equal 10; survey blocked until total corrected. |  |
 
 ---
 
@@ -307,6 +305,7 @@ These cases address coverage gaps identified in the second comprehensive review 
 
 | Date | Change | Case IDs |
 |---|---|---|
+| 2026-06-08 | Unified column structure: removed "Actual Result" and "Tested Survey ID" columns from E2E-NEW; standardized headers (ID→Test ID, Expected Result→Expected Outcome, Steps to Perform→Steps); fixed broken rows C5-E2E-081 (11→10 cols), E2E-GAP-013 (8→7 cols), E2E-NEW-014 (merged Actual Result); added headers and separators to Out-of-Scope tables. | All tables |
 | 2026-05-11 | Comprehensive second 3-pass review. **Pass 1:** 3 accuracy fixes: C-2LOGIC-041 QT MTS→MTM (matrixInclusion is MTM-only); C5-E2E-066 "consecutive error" renamed to `RankingError` (correct ValidationErrorType); C-2LOGIC-009 self-contradictory description clarified (prohibition is SQ1↔SQ2 pairwise, not all-3-SQ mutual exclusion). **Pass 2:** +13 new cases: E2E-NEW-014 (MTT comprehensive), E2E-NEW-015 (RNK dropdown display format), E2E-NEW-016 (Note HTML content), C5-E2E-081 (FAL required=All), C5-E2E-082 (yellow-flag screen-out explicit), E2E-GAP-013 (optional RAT Out-of-10), C-2LOGIC-073 (matrixInclusion+screeningOut), C-2LOGIC-074 (RNK exclusive+screeningOut), C-2LOGIC-075 (FAL+questionSelect+required). **Pass 3:** Count updated ~255→~278. | C-2LOGIC-073–075; E2E-NEW-014–016; C5-E2E-081–082; E2E-GAP-013 |
 | 2026-05-11 | 3-pass review against Confluence spec + rosemary-frontend. Pass 1: 6 accuracy corrections (C-2LOGIC-009/022/023 QT MTS→MTM for matrixInclusion, C1-E2E-036 RAT auto-fill clarified to totalValue, E2E-NEW-008 screeningOutFlg=2 explicit, C-2LOGIC-033 prohibition empty-SQ corrected). Pass 2: +12 gap-fill cases. Removed duplicate C-2LOGIC-047–072 section. Count header updated. | E2E-GAP-001–012 |
 | 2026-04-27 | Added P3 expansion: 26 additional two-logic combination cases | C-2LOGIC-047–072 |
@@ -320,13 +319,19 @@ These cases address coverage gaps identified in the second comprehensive review 
 
 ### Loop Block Cases
 
+| Test ID | Scenario Title | Pre-conditions | Steps | Expected Outcome | Related JIRA |
+| --- | --- | --- | --- | --- | --- |
 | E2E-005 | Loop block — validation recovery in iteration 2 | Loop block over Q10–Q12; maxIterations = 3 | Complete iter 1 normally; in iter 2, submit invalid answer to Q10 (exceeds maxLength); correct and resubmit | InputLength ValidationError returned for Q10 in iter 2; respondent corrects; iter 2 completes; iter 3 proceeds normally. |  |
 
 ### Quota Cases
 
+| Test ID | Scenario Title | Pre-conditions | Steps | Expected Outcome | Related JIRA |
+| --- | --- | --- | --- | --- | --- |
 | E2E-008 | Quota-based routing — quota boundary | Segment A quota = 50; 49 respondents already in segment A | Respondent 50 qualifies for A; Respondent 51 also qualifies for A | Respondent 50 → routed into segment A. Respondent 51 → quota full; routed to alternate path. Both routing decisions recorded correctly. |  |
 
 ### User-Attribute Pre-Fill Cases
 
+| Test ID | Scenario Title | Pre-conditions | Steps | Expected Outcome | Related JIRA |
+| --- | --- | --- | --- | --- | --- |
 | E2E-010 | User attribute pre-fill — pre-filled answer visible on survey start | Survey with Q1 pre-filled from user\["name"\]; user\["name"\] = "Tanaka" | Open survey | Q1 displays "Tanaka" on load; modifiedMausInfo contains pre-filled value; respondent can proceed with pre-filled answer recorded |  |
 
